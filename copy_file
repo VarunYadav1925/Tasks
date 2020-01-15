@@ -1,0 +1,16 @@
+import shutil, os
+
+#Creating function and passing parameters
+def change_directory(a,b):
+    #The source address and file name are combined in a specific format
+    combine = (f"{source}\\\{file}")
+    os.chdir(source)
+    destination=input("Enter the destination path ")  
+    #Using shutil module the file would be copied to destination address  
+    shutil.copy(combine,destination)
+
+source  = input("Enter source path ")
+file    = input("Enter file name ")
+
+#Calling the function
+change_directory(source,file)
