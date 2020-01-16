@@ -1,10 +1,8 @@
 import os,shutil
-
-source=r'C:\Users\Varun\Desktop\a'
-destination=r'C:\Users\Varun\Desktop\b'
-
+source=input("Enter source path: ")
+destination=input("Enter destination path: ")
 for file in os.listdir(source):
     file_name = os.path.join(source, file)
     if (os.path.isfile(file_name)):
         shutil.copy(file_name, destination)
-        os.rename(destination+'\\'+ file,destination+'\\'+ file.replace(' ', '_').lower()) 
+        os.rename(destination+'\\'+ file,destination+'\\'+ file.replace(' ', '_').lower())  
