@@ -7,6 +7,7 @@ def change_directory(source,destination):
             shutil.copy(file_name, destination)
             os.rename(destination+'\\'+ file,destination+'\\'+ file.replace(' ', '_').lower()) 
 
-source=input("Enter source path: ")
-destination=input("Enter destination path: ")
-change_directory(source, destination)
+if __name__=="__main__":
+    source=input("Enter source path: ")
+    destination=input("Enter destination path: ")
+    change_directory(source, destination)
