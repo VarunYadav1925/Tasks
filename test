@@ -1,5 +1,4 @@
-import os
-import shutil
+import os,shutil
 
 source=r'C:\Users\Varun\Desktop\a'
 destination=r'C:\Users\Varun\Desktop\b'
