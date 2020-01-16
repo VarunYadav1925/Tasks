@@ -8,7 +8,4 @@ for file in os.listdir(source):
     file_name = os.path.join(source, file)
     if (os.path.isfile(file_name)):
         shutil.copy(file_name, destination)
-        filenames = os.listdir(destination)
-        for filename in filenames:
-            #print(filename)
-            os.rename(destination+'\\'+ filename,destination+'\\'+ filename.replace(' ', '_').lower()) 
+        os.rename(destination+'\\'+ file,destination+'\\'+ file.replace(' ', '_').lower()) 
