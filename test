@@ -1,8 +1,12 @@
 import os,shutil
+
+def change_directory(source,destination):
+    for file in os.listdir(source):
+        file_name = os.path.join(source, file)
+        if (os.path.isfile(file_name)):
+            shutil.copy(file_name, destination)
+            os.rename(destination+'\\'+ file,destination+'\\'+ file.replace(' ', '_').lower()) 
+
 source=input("Enter source path: ")
 destination=input("Enter destination path: ")
-for file in os.listdir(source):
-    file_name = os.path.join(source, file)
-    if (os.path.isfile(file_name)):
-        shutil.copy(file_name, destination)
-        os.rename(destination+'\\'+ file,destination+'\\'+ file.replace(' ', '_').lower())  
+change_directory(source, destination)
