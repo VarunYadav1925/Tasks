@@ -1,0 +1,76 @@
+import pymysql
+
+class data_learning(object):
+
+    def __init__(self):
+        self.server_name=input("Enter server name: ")
+        self.user_name= input("Enter user name: ")
+        self.user_password=input("Enter user passsword: ")
+        self.database_name= input("Enter database name: ")
+        self.db = pymysql.connect(self.server_name, self.user_name, self.user_password, self.database_name)
+        self.cursor = self.db.cursor()
+
+    def create_table(self):
+        while True:
+            try:
+                table_name= input("Enter the table name: ")
+                self.cursor.execute(f"DROP TABLE IF EXISTS {table_name}")
+                #check condition
+                table_values=input("Enter the query for columns name: id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(25), name1 VARCHAR(25), gender VARCHAR(1)")
+                self.cursor.execute(f"CREATE TABLE {table_name}({table_values})")
+                option=input("Want to create more talbes? (Y/N): ")
+                if option.lower()=='n':
+                    break
+                else:
+                    continue
+            except:
+                print("Enter correct value\n\n ")
+                
+    def insert_values(self):
+        #insert Table
+        table_name=input("Insert data into table name: ")
+
+        sql = f"""INSERT INTO {table_name}(FIRST_NAME,
+        LAST_NAME, AGE, SEX, INCOME)
+        VALUES ('Mac', 'Mohan', 20, 'M', 2000)"""
+        try:
+        # Execute the SQL command
+            cursor.execute(sql)
+            # Commit your changes in the database
+            self.db.commit()
+        except:
+        # Rollback in case there is any error
+            self.db.rollback()
+
+
+    def update_table(self):
+        table_name=input("Enter the name of the table to make changes: ")
+        sq=f"UPDATE {table_name} SET name = 'abc' WHERE id = 12"
+        self.cursor.execute(sq)
+        self.db.commit()
+
+    def drop_table(self):
+        table_name= input("Enter the table name: ")
+        self.cursor.execute(f"DROP TABLE IF EXISTS {table_name}")
+        self.db.commit()
+
+    def close_connection(self):
+            self.db.close()
+
+while True:
+    obj= data_learning()
+    option=input("Options available: \n\t 1)Create table \n\t 2)Insert values \n\t 3)Update values \n\t 4)Drop table \n\t 5)Exit\n Please enter number: ")
+
+    if option=='1':
+        obj.create_table()
+    elif option=='2':
+        obj.insert_values()
+    elif option=='3':
+        obj.update_table()
+    elif option=='4':
+        obj.drop_table()
+    elif option=='5':
+        obj.close_connection()
+    else:
+        print("Please choose a valid option")
+
